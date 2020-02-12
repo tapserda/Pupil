@@ -120,7 +120,37 @@ class TreeDocumentFileX(
     }
 
     override fun findFile(displayName: String): DocumentFileX? {
-        TODO("Not impelmented")
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-    
+
+    /*
+    override fun findFile(displayName: String): DocumentFileX? {
+        try {
+            val contentResolver = context.contentResolver
+            val children = DocumentsContract.buildChildDocumentsUriUsingTree(uri, DocumentsContract.getDocumentId(uri))
+
+            contentResolver.query(
+                children,
+                arrayOf(
+                    DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                    DocumentsContract.Document.COLUMN_DISPLAY_NAME
+                ),
+                null,
+                null,
+                null
+            ).use {
+                while (it?.moveToNext() == true) {
+                    val (documentID, name) = it.getString(0) to it.getString(1)
+
+                    if (name == displayName)
+                        return TreeDocumentFileX(this, context, DocumentsContract.buildDocumentUriUsingTree(uri, documentID))
+                }
+            }
+
+            return null
+        } catch (e: Exception) {
+            return null
+        }
+    }
+*/
 }
